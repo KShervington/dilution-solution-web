@@ -1,20 +1,43 @@
 import { useState } from "react";
 
+class InputStore {
+    @observable minVolume = 0;
+    @observable stockSolution = 0;
+    @observable stockSolutionUnits = "microMolar";
+    @observable solventName = "";
+    @observable stockName = "";
+
+    @action setMinVolume(volume) {
+        this.minVolume = volume;
+    }
+
+    @action setStockSolution(volume) {
+        this.stockSolution = volume;
+    }
+
+    @action setStockSolutionUnits(units) {
+        this.stockSolutionUnits = units;
+    }
+
+    @action setSolventName(name) {
+        this.solventName = name;
+    }
+
+    @action setStockName(name) {
+        this.stockName = name;
+    }
+
+}
+
+const inputStore = new InputStore();
+
 export default function InputFields(props) {
 
-    // On stockSolution unit change, set stockSolution state variable using switch statement
-
-    // trim() all values to ensure accuracy
-
-    // Try to avoid doing all the setting and sending on submit.
-    // Set onChange() and just send existing state variable values
+    // TODO:
+    // (1) Handle submit button click
+    // (2) trim() all values to ensure accuracy --  where to do this?
 
     const [numTubes, setNumTubes] = useState(0);
-    const [minVolume, setMinVolume] = useState(0);
-    const [stockSolution, setStockSolution] = useState(0);
-    const [stockSolutionUnits, setStockSolutionUnits] = useState("microMolar");
-    const [solventName, setSolventName] = useState("");
-    const [stockName, setStockName] = useState("");
 
     const handleTubeChange = (event) => {
         setNumTubes(event.target.value);
@@ -22,12 +45,7 @@ export default function InputFields(props) {
     };
 
     const handleSubmit = () => {
-        // sessionStorage.setItem("numTubes", numTubes);
-        sessionStorage.setItem("minVolume", minVolume);
-        sessionStorage.setItem("stockSolution", stockSolution);
-        sessionStorage.setItem("stockSolutionUnits", stockSolutionUnits);
-        sessionStorage.setItem("solventName", solventName);
-        sessionStorage.setItem("stockName", stockName);
+        // old code removed; anything to do here?
     }
 
     return (
@@ -45,7 +63,7 @@ export default function InputFields(props) {
                         className="max-w-lg block w-full shadow-sm sm:max-w-xs sm:text-sm rounded-md border-solid border border-slate-200 pl-1"
                         placeholder="in µL"
                         required
-                        onChange={(event) => setMinVolume(event.target.value)}
+                        onChange={(event) => inputStore.setMinVolume(event.target.value)}
                     />
                 </div>
             </div>
@@ -60,13 +78,13 @@ export default function InputFields(props) {
                         id="stockSolution"
                         className="flex-1 shadow-sm sm:text-sm rounded-md border-solid border border-slate-200 pl-1"
                         required
-                        onChange={(event) => setStockSolution(event.target.value)}
+                        onChange={(event) => inputStore.setStockSolution(event.target.value)}
                     />
 
                     <select name="stockSolutionUnits"
                         id="stockSolutionUnits"
                         className="mt-1 sm:mt-0 w-1/6 ml-3 border-solid border border-slate-200"
-                        onChange={(event) => setStockSolutionUnits(event.target.value)}
+                        onChange={(event) => inputStore.setStockSolutionUnits(event.target.value)}
                     >
                         <option defaultValue={"microMolar"} value="microMolar">µM</option>
                         <option value="milliMolar">mM</option>
@@ -96,7 +114,7 @@ export default function InputFields(props) {
                         name="solventName"
                         id="solventName"
                         className="max-w-lg block w-full shadow-sm sm:max-w-xs sm:text-sm rounded-md border-solid border border-slate-200 pl-1"
-                        onChange={(event) => setSolventName(event.target.value)}
+                        onChange={(event) => inputStore.setSolventName(event.target.value)}
                     />
                 </div>
             </div>
@@ -112,7 +130,7 @@ export default function InputFields(props) {
                         name="stockName"
                         id="stockName"
                         className="max-w-lg block w-full shadow-sm sm:max-w-xs sm:text-sm rounded-md border-solid border border-slate-200 pl-1"
-                        onChange={(event) => setStockName(event.target.value)}
+                        onChange={(event) => inputStore.setStockName(event.target.value)}
                     />
                 </div>
             </div>
