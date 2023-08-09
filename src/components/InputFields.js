@@ -44,6 +44,7 @@ export default function InputFields(props) {
                         id="minVolume"
                         className="max-w-lg block w-full shadow-sm sm:max-w-xs sm:text-sm rounded-md border-solid border border-slate-200 pl-1"
                         placeholder="in µL"
+                        required
                         onChange={(event) => setMinVolume(event.target.value)}
                     />
                 </div>
@@ -58,6 +59,7 @@ export default function InputFields(props) {
                         name="stockSolution"
                         id="stockSolution"
                         className="flex-1 shadow-sm sm:text-sm rounded-md border-solid border border-slate-200 pl-1"
+                        required
                         onChange={(event) => setStockSolution(event.target.value)}
                     />
 
@@ -80,7 +82,7 @@ export default function InputFields(props) {
                     # of Tubes<span className="text-red-400">*</span>
                 </label>
                 <div className="flex mt-1 sm:mt-0 sm:col-span-2">
-                    <input type="range" min={"0"} max={"20"} name="numOfTubes" id="numOfTubes" className="flex-1" value={numTubes} onChange={handleTubeChange} />
+                    <input type="range" min={"0"} max={"20"} name="numOfTubes" id="numOfTubes" className="flex-1" value={numTubes} required onChange={handleTubeChange} />
                     <input type="number" min={"0"} max={"20"} name="secondaryTubeCount" id="secondaryTubeCount" className="mt-1 sm:mt-0 w-1/6 ml-3 border-solid border border-slate-200" value={numTubes} onChange={handleTubeChange} />
                 </div>
             </div>
