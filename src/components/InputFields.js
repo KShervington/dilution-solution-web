@@ -1,35 +1,10 @@
 import { useState } from "react";
+import { useInputStore } from "../InputStoreContext";
 
-class InputStore {
-    @observable minVolume = 0;
-    @observable stockSolution = 0;
-    @observable stockSolutionUnits = "microMolar";
-    @observable solventName = "";
-    @observable stockName = "";
-
-    @action setMinVolume(volume) {
-        this.minVolume = volume;
-    }
-
-    @action setStockSolution(volume) {
-        this.stockSolution = volume;
-    }
-
-    @action setStockSolutionUnits(units) {
-        this.stockSolutionUnits = units;
-    }
-
-    @action setSolventName(name) {
-        this.solventName = name;
-    }
-
-    @action setStockName(name) {
-        this.stockName = name;
-    }
-
-}
-
-const inputStore = new InputStore();
+// const VolumeView = observer(() => {
+//     const [volume] = useState(() => inputStore) // See the Timer definition above.
+//     return <h1>minVolume: {volume.minVolume}</h1>
+// })
 
 export default function InputFields(props) {
 
@@ -38,6 +13,7 @@ export default function InputFields(props) {
     // (2) trim() all values to ensure accuracy --  where to do this?
 
     const [numTubes, setNumTubes] = useState(0);
+    const inputStore = useInputStore();
 
     const handleTubeChange = (event) => {
         setNumTubes(event.target.value);
@@ -46,6 +22,9 @@ export default function InputFields(props) {
 
     const handleSubmit = () => {
         // old code removed; anything to do here?
+        for (let [key, value] of inputStore.tubeValues) {
+            console.log(key + " = " + value);
+        }
     }
 
     return (
@@ -134,6 +113,10 @@ export default function InputFields(props) {
                     />
                 </div>
             </div>
+
+            {/* <div>
+                <VolumeView />
+            </div> */}
 
             <div className="pt-5">
                 <div className="flex justify-end">

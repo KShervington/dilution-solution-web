@@ -1,10 +1,14 @@
-import { useState } from "react";
 import { IconContext } from "react-icons";
 import { GiDrippingTube } from 'react-icons/gi'
+import { useInputStore } from "../InputStoreContext";
+
+// TODO:
+// import store here so that inidividual tube value can be sent
+// top tubeValues variable there
 
 export default function DilutionTubes(props) {
 
-    const [value, setValue] = useState(0);
+    const inputStore = useInputStore();
 
     return (
         <div className="flex flex-col justify-center items-center w-3/4 sm:w-1/2 md:w-1/5 py-2 mt-2 mx-1 sm:mx-2 rounded-md bg-white shadow-md">
@@ -18,7 +22,7 @@ export default function DilutionTubes(props) {
                 name="tube"
                 className="flex-1 shadow-sm w-1/2 sm:text-sm rounded-md border-solid border border-slate-200 pl-1"
                 placeholder="concentration"
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => inputStore.setTubeValue(props.tubeNumber, e.target.value)}
             />
         </div>
     );
