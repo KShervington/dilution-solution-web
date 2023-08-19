@@ -1,4 +1,6 @@
-import { observer } from "mobx-react-lite"
+import { useInputStore } from "../InputStoreContext";
+
+const inputStore = useInputStore();
 
 let currentUnit; // Selected unit type for stock solution
 let solutionVolume;
@@ -6,9 +8,8 @@ let dilutionVolume;
 let minVolume;
 let stockSolution;
 
-currentUnit = sessionStorage.getItem("stockSolutionUnits");
+currentUnit = inputStore.stockSolutionUnits;
 solutionVolume = sessionStorage.getItem("stockSolution");
-
 
 
 // Scan input and split based on comma delimiter

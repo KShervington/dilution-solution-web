@@ -7,7 +7,7 @@ import { useObserver } from 'mobx-react-lite';
 export default function MainInputs(props) {
     const [toggleForm, setToggleForm] = useState(false);
 
-    // This is the middle funtionc for grabbing number of tubes form InputFields component
+    // This is the middle function for grabbing number of tubes form InputFields component
     const pullNumTubesMid = (tubeCount) => {
         props.topNumTubeGetter(tubeCount);
     }
@@ -29,3 +29,6 @@ export default function MainInputs(props) {
 
     ));
 }
+
+// Old Code for getting tube count:
+// {toggleForm && <InputFields midNumTubeGetter={pullNumTubesMid} />}

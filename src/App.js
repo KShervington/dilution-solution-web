@@ -5,17 +5,13 @@ import Header from "./components/Header"
 import MainInputs from './components/MainInputs';
 import { InputStoreProvider } from './InputStoreContext';
 import InputStore from './InputStore';
+// import Footer from './components/Footer';
 
 function App() {
 
-  // could create an object here which gathers all data from input fields
-
-  // How to handle data from tubes?
-  // Could send it all here then centralize into an array
-
   // How to handle form submission and subsequent calculations?
-  // On 'submit' click, add InputFields data to an object passed down to it
 
+  //Old code for getting number of tubes
   const [tubes, setTubes] = useState(0);
 
   const pullNumTubesTop = (tubeCount) => {
@@ -34,12 +30,16 @@ function App() {
           </div>
 
         </div>
-        <footer className='bg-gradient-to-l from-slate-700 to-slate-600 border-solid border-t-2 border-slate-500'>
+
+        {/* <Footer /> */}
+
+        {/* <footer style={{ position: 'absolute', transform: `translateY(100%)` }} className='w-full max-w-screen flex flex-row justfify-left items-end mb-auto bg-gradient-to-l from-slate-700 to-slate-600 border-solid border-t-2 border-slate-500 mt-2'>
           <h1>Attributions:</h1>
           <p>Favicon created by Iconjam - <a href="https://www.flaticon.com/" title="beaker icons" className='text-blue-500 underline'>Flaticon</a></p>
-        </footer>
+        </footer> */}
+
       </div>
-    </InputStoreProvider>
+    </InputStoreProvider >
   );
 }
 

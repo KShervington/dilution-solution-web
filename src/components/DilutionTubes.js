@@ -2,10 +2,6 @@ import { IconContext } from "react-icons";
 import { GiDrippingTube } from 'react-icons/gi'
 import { useInputStore } from "../InputStoreContext";
 
-// TODO:
-// import store here so that inidividual tube value can be sent
-// top tubeValues variable there
-
 export default function DilutionTubes(props) {
 
     const inputStore = useInputStore();

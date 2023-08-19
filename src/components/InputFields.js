@@ -18,14 +18,32 @@ export default function InputFields(props) {
     const handleTubeChange = (event) => {
         setNumTubes(event.target.value);
         props.midNumTubeGetter(event.target.value);
+        inputStore.setNumTubes(event.target.value);
     };
 
     const handleSubmit = () => {
-        // old code removed; anything to do here?
-        for (let [key, value] of inputStore.tubeValues) {
-            console.log(key + " = " + value);
-        }
+        inputStore.doCalculations();
+
+        // for (let [key, value] of inputStore.tubeValues) {
+        //     console.log("Tube " + key + " = " + value);
+        // }
+
+        // console.log("map size is: " + inputStore.tubeValues.size);
+        // console.log("minVolume = " + inputStore.minVolume);
+        // console.log("stockSolution = " + inputStore.stockSolution);
+        // console.log("numTubes = " + inputStore.numTubes);
+        // console.log("solventName = " + inputStore.solventName);
+        // console.log("stockName = " + inputStore.stockName);
     }
+
+    // *** FOR TESTING ***
+    // const VolumeView = () => {
+    //     return (
+    //         <div>
+    //         numTubes from inputStore is [{inputStore.stockSolution}]
+    //       </div>
+    //     );
+    // }
 
     return (
         <div>
@@ -114,6 +132,7 @@ export default function InputFields(props) {
                 </div>
             </div>
 
+            {/* FOR TESTING */}
             {/* <div>
                 <VolumeView />
             </div> */}
