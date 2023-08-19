@@ -1,6 +1,11 @@
 import { GiTestTubes } from "react-icons/gi"
 import { IconContext } from "react-icons";
 
+// TODO:
+// Implement functionality for the "Clear All Fields" button;
+// It could call a function in the Input Store that zeroes out all variables there;
+// It would then need to clear the UI text fields as well;
+
 export default function Header() {
 
     return (
