@@ -1,14 +1,5 @@
 import { makeObservable, observable, action } from "mobx"
 
-// TODO:
-// Make sure the tubeValues map does not use
-// invalid entries in calculations.
-// The current problem is that tubes can only be added to 
-// the map but not removed.
-// NOTE: a new entry in the tube value map is only set when
-// typed in the tube text box, not when tubes are added
-// or removed; still a problem.
-
 class InputStore {
     minVolume = 0;
     stockSolution = 0;
