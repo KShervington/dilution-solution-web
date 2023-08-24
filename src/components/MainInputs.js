@@ -29,6 +29,3 @@ export default function MainInputs(props) {
 
     ));
 }
-
-// Old Code for getting tube count:
-// {toggleForm && <InputFields midNumTubeGetter={pullNumTubesMid} />}

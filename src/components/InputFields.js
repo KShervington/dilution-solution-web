@@ -1,16 +1,7 @@
 import { useState } from "react";
 import { useInputStore } from "../InputStoreContext";
 
-// const VolumeView = observer(() => {
-//     const [volume] = useState(() => inputStore) // See the Timer definition above.
-//     return <h1>minVolume: {volume.minVolume}</h1>
-// })
-
 export default function InputFields(props) {
-
-    // TODO:
-    // (1) Handle submit button click
-    // (2) trim() all values to ensure accuracy --  where to do this?
 
     const [numTubes, setNumTubes] = useState(0);
     const inputStore = useInputStore();
@@ -23,17 +14,6 @@ export default function InputFields(props) {
 
     const handleSubmit = () => {
         inputStore.doCalculations();
-
-        // for (let [key, value] of inputStore.tubeValues) {
-        //     console.log("Tube " + key + " = " + value);
-        // }
-
-        // console.log("map size is: " + inputStore.tubeValues.size);
-        // console.log("minVolume = " + inputStore.minVolume);
-        // console.log("stockSolution = " + inputStore.stockSolution);
-        // console.log("numTubes = " + inputStore.numTubes);
-        // console.log("solventName = " + inputStore.solventName);
-        // console.log("stockName = " + inputStore.stockName);
     }
 
     // *** FOR TESTING ***
@@ -83,9 +63,9 @@ export default function InputFields(props) {
                         className="mt-1 sm:mt-0 w-1/6 ml-3 border-solid border border-slate-200"
                         onChange={(event) => inputStore.setStockSolutionUnits(event.target.value)}
                     >
-                        <option defaultValue={"microMolar"} value="microMolar">µM</option>
-                        <option value="milliMolar">mM</option>
-                        <option value="cellsPerMilliLiter">cells/mL</option>
+                        <option defaultValue={"µM"} value="µM">µM</option>  {/* microMolar */}
+                        <option value="mM">mM</option>                      {/* milliMolar */}
+                        <option value="cells/mL">cells/mL</option>          {/* cells per milliliter */}
                     </select>
                 </div>
             </div>
