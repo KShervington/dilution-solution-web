@@ -1,8 +1,10 @@
 import { IconContext } from "react-icons";
 import { GiDrippingTube } from 'react-icons/gi'
 import { useInputStore } from "../InputStoreContext";
+import DisplayCalculations from "./DisplayCalculations"
+import { observer } from "mobx-react-lite";
 
-export default function DilutionTubes(props) {
+const DilutionTubes = observer((props) => {
 
     const inputStore = useInputStore();
 
@@ -20,6 +22,11 @@ export default function DilutionTubes(props) {
                 placeholder="concentration"
                 onChange={(e) => inputStore.setTubeValue(props.tubeNumber, e.target.value)}
             />
+
+            {inputStore.displayValComponent && <DisplayCalculations tubeNum={props.tubeNumber} />}
+
         </div>
     );
-}
+});
+
+export default DilutionTubes;
